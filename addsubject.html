@@ -1,0 +1,137 @@
+{% extends '_layout.html' %}
+{% block body %}
+<div class='row'>
+		<div class='col-md-5'>
+				<h1 style='color:orange;'>Add Subject</h1>
+				<br>
+					<form method='POST' action="">
+						<div class='form-group'>
+						<div class='form-group'>
+							<label>Department Name</label>
+							<select name='dname' class='form-control'>
+							<option>Select Department</option>
+							<option>Bsc(cs)</option>
+							<option>BCA</option>
+							<option>Bcom</option>
+							<option>MCA</option>
+							</select>
+						</div>
+							<label>Subject Name</label>
+							<select name='sbjname'  class='form-control'>
+							<option>Select Subject</option>
+							<option>Python</option>
+							<option>Java</option>
+							<option>DBMS</option>
+							<option>COMPUTER FUNDAMENTAL</option>
+							<option>COMPUTER NETWORK</option>
+							<option>C</option>
+							<option>C++</option>
+							<option>OS</option>
+							<option>PHP</option>
+							<option>IOT</option>
+							<option>ADSA</option>
+							<option>RMIPR</option>
+							<option>ML</option>
+							<option>FSWD</option>
+							<option>SPM</option>
+							<option>Bussiness Law</option>
+							<option>Finicial Accounting</option>
+							<option>Principal Management</option>
+							<option>Industrial Law</option>
+							<option>Management Study</option>
+							<option>Finicial Marketing</option>
+							</select>
+							
+						</div>
+						<div class='form-group'>
+							<label>Subject Code</label>
+							<select name='sbjcode' class='form-control' >
+							<option>Select Subject</option>
+							<option>PY01</option>
+							<option>JA02</option>
+							<option>DBMS03</option>
+							<option>COM04</option>
+							<option>CN05</option><!--BCA-->
+							<option>C06</option>
+							<option>C++07</option>
+							<option>OS08</option>
+							<option>PHP09</option>
+							<option>IOT10</option><!--BSC-->
+							<option>ADSA11</option>
+							<option>RMIPR12</option>
+							<option>ML13</option>
+							<option>FSWD14</option>
+							<option>SPM15</option><!--MCA-->
+							<option>BL16</option>
+							<option>FA17</option>
+							<option>PM18</option>
+							<option>IL19</option>
+							<option>MS20</option><!--BCOM-->
+							</select>
+							<div class='form-group'>
+								<label>Semester</label>
+								<select name='sem' class='form-control'>
+								<option>Select Semester</option>
+								<option>I-sem</option>
+								<option>II-sem</option>
+								<option>III-sem</option>
+								<option>VI-sem</option>
+								<option>V-sem</option>
+								<option>VI-sem</option>
+							</select>
+							</div>
+							
+						</div>
+						
+						
+						<input type='submit' name='submit' value='Update' class='btn-lg' style='margin-left:40%;background-color:orange;border:none;'>
+					</form>
+		</div>
+		
+				
+				<div class='col-md-6'>
+				<h1 style='color:orange'>View Subject</h1>
+			    <table class='table table-bordered mt-5'>
+			    <thead style='background:orange'>
+					<tr>
+					   <th>Sno</th>
+					   <th>Department Name</th>
+					   <th>Semester</th>
+					   <th>Subject Name</th>
+					   <th>Subject Code</th>
+					   <th>Edit</th>
+					   <th>Delete</th>
+					</tr>
+				</thead>
+			
+				<tbody>
+					{% for row in datas %}
+					<tr>
+					 <td>{{loop.index}}</td>
+					 <td>{{row.dname}}</td>
+					 <td>{{row.sem}}</td>
+					 <td>{{row.sbname}}</td>
+					 <td>{{row.sbcode}}</td>
+					 <td>
+					<a href='{{url_for("subject_edit",sbid=row.sbid)}}' class='btn btn-success'>Edit</a>
+					</td>
+					<td>
+					<a href='{{url_for("subject_delete",sbid=row.sbid)}}' class='btn btn-danger' onclick='return confirm("Are you sure")'>Delete</a>
+					</td>
+			</tr>
+		{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	</div>
+			</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+

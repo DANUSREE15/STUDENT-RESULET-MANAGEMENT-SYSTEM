@@ -1,0 +1,31 @@
+{%extends '_layout.html' %}
+{% block body %}
+		<div class='col-md-3 mt-5 ml-5 mx-auto'>
+		<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/adminlogin">Home</a></li>
+					<li class="breadcrumb-item"><a href="/adddepartment">Add Subject</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Edit</li>
+					</ol>
+				</nav>
+				<h1 class='ml-2' style='color:orange'>UPDATE SUBJECT</h1>
+					<form method='POST' action="" class='mt-3'>
+						<div class='form-group'>
+						<label>Department Name</label>
+						<input type='text' name='dname' class='form-control' value={{datas.dname}}>	
+						</div>
+						<div class='form-group'>
+							<label>Subject Name</label>
+							<input type='text'name='sbjname'  class='form-control' value={{datas.sbname}}>
+						</div>
+						<div class='form-group'>
+							<label>Subject Code</label>
+							<input type='text' name='sbjcode' class='form-control' value={{datas.sbcode}}>
+						</div>
+						
+						
+						<input type='submit' name='submit' value='Update' class='btn btn-success' style='margin-left:40%;background:orange;border:none;'>
+					</form>
+				</div>	
+
+{% endblock %}

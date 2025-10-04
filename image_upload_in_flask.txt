@@ -1,0 +1,47 @@
+<form action=" " method='post' enctype='multipart/form-data'>
+<input type="file" class="form-control" name='file'>
+
+from flask import Flask,flash, render_template, request,url_for,redirect,Response,session,send_file,send_from_directory
+from functools import wraps
+from flask_mysqldb import MySQL
+from werkzeug.utils import secure_filename
+
+import os
+import random
+
+
+UPLOAD_FOLDER='static/images'
+FILE_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+def allowed_extensions(file_name):
+    return '.' in file_name and file_name.rsplit('.',1)[1].lower() in FILE_EXTENSIONS
+	
+@app.route('/add_place',methods=['POST','GET'])
+def add_place():
+
+    if request.method=='POST':
+    
+        cid=request.form['cid']    
+        pname=request.form['pname']    
+        loc=request.form['loc']    
+        des=request.form['des']    
+        file = request.files['file']
+
+        if file and allowed_extensions(file.filename):
+            filename, file_extension = os.path.splitext(file.filename)
+            new_filename = secure_filename(str(random.randint(10000,99999))+"."+file_extension)
+            file.save(os.path.join(UPLOAD_FOLDER, new_filename))   
+
+            cur=mysql.connection.cursor()
+            cur.execute("INSERT INTO `place`(`cid`, `pname`, `loc`, `des`, `pimg`) VALUES (%s,%s,%s,%s,%s)", (cid,pname,loc,des,new_filename))
+            mysql.connection.commit()
+            cur.close()    
+            flash('Details Added Successfully','success')
+            
+    cur=mysql.connection.cursor()
+    cur.execute("select * from category")
+    category=cur.fetchall()
+    return render_template("add_place.html",category=category)
+	
+	
+	<td><img src='{{url_for("static",filename="images/"+row.IMAGE)}}' style='width:120px;'></td>

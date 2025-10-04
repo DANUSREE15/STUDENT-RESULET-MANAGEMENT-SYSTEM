@@ -1,0 +1,75 @@
+{% extends '_layout.html' %}
+{% block body %}
+	<div class='col-md-9 ml-auto'>
+		<h2 style='color:orange;margin-left:15%;' class='mt-5'>ADD DEPARTMENT</h2>
+		<br>
+		<form  method="POST" action="" enctype="multipart/form-data" class='mb-5'>
+		<div class='row mt-5'>
+			<div class='form-group col-md-3'>
+				<label>Department</label>
+				<select class='form-control' name='did'>
+				<option>Select Department</option>
+				{% for row in datas %}
+					<option value='{{row.did}}'>{{row.dname}}-{{row.year}}</option>
+				{% endfor %}
+				</select>
+			</div>
+			<div class='form-group col-md-3'>
+				<label>Semester</label>
+				<select name='sem' class='form-control'>
+				<option>Select Semester</option>
+				<option>I-sem</option>
+				<option>II-sem</option>
+				<option>III-sem</option>
+				<option>VI-sem</option>
+				<option>V-sem</option>
+				<option>VI-sem</option>
+				</select>
+			</div>
+			<div class='col-md-3 mt-4'>
+			<input type='submit' name='submit' value='Submit' class='btn-lg' style='background-color:orange;border:none;'>
+			</div>
+		</form>
+	</div>
+	</div>
+	
+	<div class='col-md-12 mt-5'>
+		<h1 style='margin-left:35%;color:orange;'>VIEW MARK</h1>
+		<br>
+			<table class='table table-bordered'>
+			<thead style='background-color:ORANGE;'>
+				<tr >
+					<th>SNO</th>
+					<th>Department</th>
+					<th>Semester</th>
+					<th>ROLL NO</th>
+					<th>SUB 1</th>
+					<th>SUB 2</th>
+					<th>SUB 3</th>
+					<th>SUB 4</th>
+					<th>SUB 5</th>
+					<th>RESULT</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				{% for row in status %}
+					<tr>
+						<td>{{loop.index}}</td>
+						<td>{{row.dname}}</td>
+						<td>{{row.sem}}</td>
+						<td>{{row.roll_no}}</td>
+						<td>{{row.s1}}</td>
+						<td>{{row.s2}}</td>
+						<td>{{row.s3}}</td>
+						<td>{{row.s4}}</td>
+						<td>{{row.s5}}</td>
+						<td>{{row.result}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+				
+
+{% endblock %}

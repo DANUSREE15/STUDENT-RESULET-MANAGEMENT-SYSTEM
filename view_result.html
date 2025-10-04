@@ -1,0 +1,61 @@
+{% extends '_student_layout.html'%}
+{% block body %}
+		<div class='col-md-5 mt-5 ml-5'style='margin-left:15%'>
+		<div class='row'>
+		<table class='table table-bordered'>
+			<thead>
+				<tr>
+				<h1 style='color:black;margin-left:34%;margin-bottom:5%'>MARK</h1>
+				</tr>
+			</thead>
+			<tbody>
+				{% if datas %}
+                <tr style='background:orange'>
+                    <td><b>{{datas[0].sbname}}</b></td>
+                    <td><b>{{datas[1].sbname}}</b></td>
+                    <td><b>{{datas[2].sbname}}</b></td>
+                    <td><b>{{datas[3].sbname}}</b></td>
+                    <td><b>{{datas[4].sbname}}</b></td>
+					</tr>
+					<tr>
+                    <td>{{ datas[0].s1}}</td>
+                    <td>{{ datas[0].s2}}</td>
+                    <td>{{ datas[0].s3}}</td>
+                    <td>{{ datas[0].s4}}</td>
+                    <td>{{ datas[0].s5}}</td>	
+                </tr>
+                {% endif %}
+            </tbody>
+		</table>
+	</div>
+	</div>
+	
+		<div class='col-md-3 mt-5 ml-5'>
+			<table class='table table-bordered' style='background:orange'>
+				<thead>
+					<tr><h1 style='margin-left:15%;margin-bottom:10%'>View Profile</h1>
+					</tr>
+				</thead>
+				<tbody>
+				{% if  datas %}
+				<tr>
+				<td><b>NAME</b></td>
+				<td style='color:white'><h5>{{datas[0].sname}}</h5></td>
+				</tr>
+				<td><b>DEPARTMENT</b></td>
+				<td style='color:white'><h5>{{datas[0].dname}}</h5></td>
+				</tr>
+				<td><b>YEAR</b></td>
+				<td style='color:white'><h5>{{datas[0].year}}</h5></td>
+				</tr>
+				<td><b>SEMESTER</b></td>
+				<td style='color:white'><h5>{{datas[0].sem}}</h5></td>
+				</tr>
+				{% endif %}
+				</tbody>
+			</table>
+			<marquee style='color:green;font-size:33px;margin-top:5%;'>YOU ARE PASS !</marquee>
+		</div>
+	</div>
+	
+{% endblock %}

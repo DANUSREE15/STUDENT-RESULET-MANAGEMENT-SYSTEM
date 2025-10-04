@@ -1,0 +1,29 @@
+{%extends '_layout.html' %}
+{% block body %}
+	<div class='col-md-6 mt-5'>
+		<h1>Students Marks</h1>
+		<hr style='background:red;width:80%;margin-left:1%'>
+			<table class='table table-bordered table-warning'>
+			<thead>
+				<tr>
+					<th>Sno</th>
+					<th>Subject Name</th>
+					<th>Mark</th>
+					<th>Result</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				{% for row in datas %}
+				<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row.subname}}</td>
+				<td>{{row.marks}}</td>
+				<td>{{row.result}}</td>
+			</tr>
+		{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
+{% endblock %}

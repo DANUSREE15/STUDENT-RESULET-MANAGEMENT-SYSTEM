@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>Admin Page</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.css'>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</head>
+	<body>
+			<div class='navbar navbar-expand-md' style='height:10%;background:orange;'>
+				<h1 class='navbar-brand' style='font-size:30px;'>
+				<i class="fa fa-university" aria-hidden="true">&nbsp;Admin Page</i>
+				</h1>
+					<ul class='navbar-nav ml-auto'>
+						<li class='nav-item nav-link'>
+						<a href='/home' style='color:white;font-size:25px;font-family:Candara;'>Home</a>
+						</li>
+						<li class='nav-item nav-link'>
+						<a href='/student_admin' style='color:white;font-size:25px;font-family:Candara;'>Student</a>
+						</li>
+						<li class='nav-item nav-link'>
+						<a href='/logout' style='color:white;font-size:25px;font-family:Candara;'>Logout</a>
+						</li>
+					</ul>
+			</div>		
+		
+				<!--SIDEBAR-->
+	<div class='container-fluid'>
+		<div class='row'>
+			<div class='col-md-2'>
+				<div class='card mt-5' style='font-size:20px;box-shadow:2px 2px 5px 2px orange;'>
+				<ul class='navbar-nav'>
+					<li class='nav-link ml-4'>
+					<i class="fa fa-home" aria-hidden="true" style='color:grey'></i>
+					<a href='/adminlogin' style='text-decoration:none;color:grey'>Home</a>
+					
+					</li>
+					<li class='nav-link ml-4'>
+					<i class="fa fa-folder" aria-hidden="true"style='color:grey'></i>
+					<a href='/adddepartment' style='text-decoration:none;color:grey'>Add Department</a>
+					</li>
+					<li class='nav-link ml-4'>
+					<i class="fa fa-folder" aria-hidden="true"style='color:grey'></i>
+					<a href='/addstudent' style='text-decoration:none;color:grey'>Add Student</a>
+					</li>
+					<li class='nav-link ml-4'>
+					<i class="fa fa-folder" aria-hidden="true"style='color:grey'></i>
+					<a href='/viewstudent' style='text-decoration:none;color:grey'>View Student</a>
+					</li>
+					<li class='nav-link ml-4'>
+					<i class="fa fa-folder" aria-hidden="true"style='color:grey'></i>
+					<a href='/addsubject' style='text-decoration:none;color:grey'>Add Subject</a>
+					</li>
+					<li class='nav-link ml-4'>
+					<i class="fa fa-folder" aria-hidden="true"style='color:grey'></i>
+					<a href='/addmark' style='text-decoration:none;color:grey'>Add Mark</i></a>
+					</li>
+					<li class='nav-link ml-4'>
+					<i class="fa fa-folder" aria-hidden="true"style='color:grey'></i>
+					<a href='/addmark_view' style='text-decoration:none;color:grey'>View Mark</i></a>
+					</li>
+					<li class='nav-link ml-4'>
+					<i class="fa fa-folder" aria-hidden="true"style='color:grey'></i>
+					<a href='/admin' style='text-decoration:none;color:grey'>Logout</i></a>
+					</li>
+				</ul>
+				</div>
+			</div>
+			
+			
+			<div class='col-md-10 mt-5'>
+					{% with messages = get_flashed_messages(with_categories=true) %}
+				  {% if messages %}
+					{% for category, message in messages %}
+						<div class="alert alert-{{ category }}  alert-dismissible">{{ message }} <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button></div>
+					{% endfor %}
+				  {% endif %}
+				{% endwith %}
+
+						{% block body%}
+						
+						{%endblock %}
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

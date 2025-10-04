@@ -1,0 +1,43 @@
+<form enctype="multipart/form-data">
+
+<div class='form-group'>
+				<label>Upload File</label>
+				<input type='file' name='file' class='form-control'>
+			</div>
+			
+import os
+import csv
+
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static', 'UPLOAD_FOLDER')
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route("/add_mark",methods=['POST','GET'])
+@is_logged_in
+def add_mark():
+    if request.method=='POST':
+        a=request.form["did"]
+        b=request.form["usem"]
+        file = request.files['file']
+        filename, file_extension = os.path.splitext(file.filename)
+        new_filename = "data.csv"
+        file.save(os.path.join(UPLOAD_FOLDER, new_filename))
+
+        cur = mysql.connection.cursor()
+
+        with open(UPLOAD_FOLDER+'/data.csv',encoding="utf8") as csv_file:
+
+            csv_reader = csv.reader(csv_file, delimiter=',')
+            i=0
+            for row in csv_reader:
+                if i>0:
+                    cur.execute("insert into tbl_mark(did,sem,srollno,s1,s2,s3,s4,s5,status) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)",(a,b,row[0],row[1],row[2],row[3],row[4],row[5],row[6]))
+                i+=1
+        cur.close()
+        mysql.connection.commit()
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM tbl_department")
+    dept = cur.fetchall()
+    cur.close()
+    return render_template("addmark.html",datas=dept)

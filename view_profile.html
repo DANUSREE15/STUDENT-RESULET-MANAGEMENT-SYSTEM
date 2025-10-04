@@ -1,0 +1,51 @@
+{% extends '_student_layout.html' %}
+{%block body %}
+<div class='col-md-5 mt-5' style='margin-left:15%'>
+	<div class='row'>
+		<table class='table table-bordered'>
+			<thead>
+				<tr>
+				<th colspan='2' style='text-align:center;background:orange;font-size:25px;'><h1></h1>Profile</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in datas %}
+				<tr>
+				<td><b>ROLL NO</b></td>
+				<td style='color:black'><h5>{{row.roll_no}}</h5></td>
+				</tr>
+				<tr>
+				<td><b>IMAGES</b>
+				<td><img src='{{url_for("static",filename="images/18684..jpg")}}'style='width:120px;'><h1>{{row.simages}}</h1></td>
+				</tr>
+				<tr>
+				<td><b>STUDENT NAME</b></td>
+				<td style='color:black'><h5>{{row.sname}}</h5></td>
+				</tr>
+				<tr>
+				<td><b>DEPARTMENT NAME</b></td>
+				<td style='color:black'><h5>{{row.dname}}</h5></td>
+				</tr>
+				<tr>
+				<td><b>SEMESTER</b></td>
+				<td style='color:black'><h5>{{row.sem}}</h5></td>
+				</tr>
+				<tr>
+				<td><b>MOBILE NO</b></td>
+				<td style='color:black'><h5>{{row.mobile}}</h5></td>
+				</tr>
+				<tr>
+				<td><b>YEAR</b></td>
+				<td style='color:black'><h5>{{row.year}}</h5></td>
+				</tr>
+				
+				{% endfor %}
+			</tbody>
+		</table>
+</div>
+		
+
+
+</div>
+
+{% endblock %}

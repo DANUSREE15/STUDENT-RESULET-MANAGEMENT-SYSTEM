@@ -1,0 +1,37 @@
+{%extends '_layout.html'%}
+{% block body %}
+		<div class='col-md-6 mt-5'>
+		<h1>View Departments</h1>
+		<hr style='background:red;width:80%;margin-left:1%'>
+			<table class='table table-bordered'>
+			<thead>
+				<tr>
+					<th>Did</th>
+					<th>Dname</th>
+					<th>Year</th>
+					<th>Sem</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				{% for row in datas %}
+				<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row.dname}}</td>
+				<td>{{row.year}}</td>
+				<td>{{row.sem}}</td>
+				<td>
+				<a href='{{url_for("edit",did=row.did)}}' class='btn btn-success'>Edit</a>
+				</td>
+				<td>
+				<a href='{{url_for("delete",did=row.did)}}' class='btn btn-danger' onclick='return confirm("Are you sure")'>Delete</a>
+				<td>
+			</tr>
+		{% endfor %}
+			</tbody>
+		</table>
+	</div>
+				
+{% endblock %}

@@ -1,0 +1,18 @@
+m collage result
+
+Admin
+	login-------------aid,aname,apass
+	home page 
+	sidebar 
+	navbar-----College------Home,logout
+	department Crud   did,dname,year,sem
+	student crud      stid,sname,did,email,mobile,rollno.
+	subject crud	  sbid,sbname,did,scode
+	add mark          mid,stid,sbid,did,mark,result
+	
+
+Student
+	login
+	view profile
+	view result
+	

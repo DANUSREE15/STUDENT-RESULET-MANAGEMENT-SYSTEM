@@ -1,0 +1,40 @@
+{% extends '_layout.html' %}
+{% block body %}
+	<div class='col-md-6' style='margin-left:15%'>
+		<h2 style='color:orange;margin-left:25%;' class='mt-5'>ADD DEPARTMENT</h2>
+		<br>
+		<form  method="POST" action="" enctype="multipart/form-data" class='mb-5'>
+			<div class='form-group'>
+				<label>Department</label>
+				<select class='form-control' name='did'>
+				<option value="">Select Department</option>
+				{% for row in datas %}
+				<option value='{{row.did}}'>{{row.dname}}-{{row.year}}</option>
+				{% endfor %}
+				</select>
+			</div>
+			<div class='form-group'>
+				<label>Semester</label>
+				<select name='sem' class='form-control'>
+				<option>Select Semester</option>
+				<option>I-sem</option>
+				<option>II-sem</option>
+				<option>III-sem</option>
+				<option>VI-sem</option>
+				<option>V-sem</option>
+				<option>VI-sem</option>
+				</select>
+			</div>
+			<div class='form-group'>
+				<label>Upload File</label>
+				<input type='file' name='file' class='form-control'>
+			</div>
+			<input type='submit' name='submit' value='Submit' class='btn-lg' style='background-color:orange;border:none;margin-left:35%'>
+		</form>
+	</div>
+	</div>
+	
+	
+	
+{% endblock %}
+

@@ -1,0 +1,79 @@
+{% extends '_layout.html' %}
+{% block body %}
+<div class='row'>
+				<div class='col-md-5'>
+				<h1 style='color:orange'>Add Department</h1>
+				<br>
+					<form method='POST' action="">
+						<div class='form-group'>
+							<label>Department Name</label>
+							<select name='rname'  class='form-control'>
+							<option>Department Name</option>
+							<option>Bsc(cs)</option>
+							<option>BCA</option>
+							<option>Bcom</option>
+							<option>MCA</option>
+							</select>
+						</div>
+						<div class='form-group'>
+							<label>Year</label>
+							<select name='ryear' class='form-control' >
+							<option>Year</option>
+							<option>I</option>
+							<option>II</option>
+							<option>III</option>
+							</select>
+							
+						</div>
+						<div class='form-group'>
+							<label>Sem</label>
+							<select name='rsem' class='form-control'>
+								<option>Sem</option>
+								<option>I-sem</option>
+								<option>II-sem</option>
+								<option>III-sem</option>
+								<option>IV-sem</option>
+								<option>V-sem</option>
+								<option>VI-sem</option>
+							</select>
+						</div>
+						<input type='submit' name='submit' value='Update' class='btn-lg' style='background-color:orange;border:none'>
+					</form>
+				</div>
+			
+			<div class='col-md-6'>
+				<h1 style='color:orange;'>View Department</h1>
+				<hr style='background:red'>
+			<table class='table table-bordered'>
+			<thead style='background:orange'>
+				<tr>
+					<th>Sno</th>
+					<th>Department</th>
+					<th>Year</th>
+					<th>Semester</th>
+					<th>Edit</th>
+					<th>Delete</th> 
+				</tr>
+			</thead>
+			
+			<tbody>
+				{% for row in datas %}
+				<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row.dname}}</td>
+				<td>{{row.year}}</td>
+				<td>{{row.sem}}</td>
+				<td>
+				<a href='{{url_for("department_edit",did=row.did)}}' class='btn btn-success'>Edit</a>
+				</td>
+				<td>
+				<a href='{{url_for("departmentdelete",did=row.did)}}' class='btn btn-danger' onclick='return confirm("Are you sure")'>Delete</a>
+				</td>
+			</tr>
+		{% endfor %}
+			</tbody>
+		</table>
+	</div>
+			</div>
+</div>
+{% endblock %}

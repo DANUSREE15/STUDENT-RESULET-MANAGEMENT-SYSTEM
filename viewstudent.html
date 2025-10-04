@@ -1,0 +1,46 @@
+{%extends '_layout.html' %}
+{%block body %}
+		<div class='col-md-12'>
+		<h1 style='margin-left:35%;color:orange;'>View Students</h1>
+		<br>
+			<table class='table table-bordered table-striped'>
+			<thead style='background-color:ORANGE;'>
+				<tr >
+					<th>Sno</th>
+					<th>Student Name</th>
+					<th>Email</th>
+					<th>Department Name</th>
+					<th>Roll_no</th>
+					<th>Year</th>
+					<th>Images</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				{% for row in datas %}
+				<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row.sname}}</td>
+				<td>{{row.email}}</td>
+				<td>{{row.dname}}</td>
+				<td>{{row.roll_no}}</td>
+				<td>{{row.year}}</td>
+				<td>
+				<img src='{{url_for("static",filename="images/"+row.simage)}}' style='width:120px;'>
+				</td>
+				<td>
+				<a href='{{url_for("studentedit",sid=row.sid)}}' class='btn btn-success'>Edit</a>
+				</td>
+				<td>
+				<a href='{{url_for("studentdelete",sid=row.sid)}}' class='btn btn-danger' onclick='return confirm("Are you sure")'>Delete</a>
+				</td>
+			</tr>
+		{% endfor %}
+			</tbody>
+		</table>
+	</div>
+				
+
+{%endblock %}
